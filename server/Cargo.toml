@@ -1,0 +1,21 @@
+[package]
+name = "felix-server"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+axum = "0.6"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow = "1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3.16", features = ["env-filter"] }
+sqlx = { version = "0.6.3", features = ["postgres", "runtime-tokio-rustls", "time"] }
+time = { version = "0.3", features = ["serde"] }
+tower = { version = "0.4", features = ["util", "timeout"] }
+tower-http = { version = "0.4", features = ["add-extension", "trace", "fs"] }
+uuid = { version = "1", features = ["serde", "v4"] }
+axum-macros = "0.3.7"
+dotenvy = "0.15.7"
+jsonwebtoken = "8.3.0"
