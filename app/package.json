@@ -19,7 +19,7 @@
         "upgrade:tamagui": "yarn up '*tamagui*'@latest '@tamagui/*'@latest react-native-web-lite@latest",
         "upgrade:tamagui:canary": "yarn up '*tamagui*'@canary '@tamagui/*'@canary react-native-web-lite@canary",
         "check-deps": "check-dependency-version-consistency .",
-        "prettier": "prettier --write ."
+        "prettier": "prettier --write '**/*.{js,jsx,ts,tsx,json,md}'"
     },
     "resolutions": {
         "@types/react-native": "^0.71.3",
