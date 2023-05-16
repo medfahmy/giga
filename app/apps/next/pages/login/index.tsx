@@ -1,13 +1,14 @@
-import { HomeScreen } from "app/features/home/screen";
+import { LoginScreen } from "app/features/auth/login";
 import Head from "next/head";
 
 export default function Page() {
     return (
         <>
             <Head>
-                <title>Tbrgig</title>
+                <title>Login</title>
             </Head>
-            <HomeScreen />
+            <LoginScreen />
         </>
     );
 }
+

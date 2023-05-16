@@ -1,27 +1,21 @@
 import { ThemeToggle } from "./ThemeToggle";
 import { Menu } from "@tamagui/lucide-icons";
-// import { useUser } from 'hooks/useUser'
-import { useRouter } from "next/router";
 import * as React from "react";
 import {
     Adapt,
     Button,
     Paragraph,
-    ParagraphProps,
-    Popover,
     Separator,
     Text,
     TooltipGroup,
-    TooltipSimple,
     VisuallyHidden,
     XGroup,
     XStack,
     YStack,
     isClient,
     styled,
-    Stack,
-    H1,
     H2,
+    Popover,
 } from "tamagui";
 
 import { ContainerLarge } from "./Container";
@@ -87,9 +81,9 @@ export const HeaderContents = React.memo((props: HeaderProps) => {
             zi={50000}
         >
             <XStack ai="center" space="$4">
-                    <YStack my={-20} px="$3">
-                        <H2>Tbrgig</H2>
-                    </YStack>
+                <YStack my={-20} px="$3">
+                    <H2>Tbrgig</H2>
+                </YStack>
                 {/* ) : (
                     <NextLink href="/">
                         <YStack px="$3" cur="pointer" my={-20}>
@@ -125,16 +119,11 @@ export const HeaderContents = React.memo((props: HeaderProps) => {
                 ai="center"
             >
                 <NextLink href="/" aria-label="Homepage">
-                    <XStack
-                        cursor="default"
-                        pointerEvents="auto"
-                        als="center"
-                    >
+                    <XStack cursor="default" pointerEvents="auto" als="center">
                         <H2>Tbrgig</H2>
                     </XStack>
                 </NextLink>
             </XStack>
-
 
             {/*  prevent layout shift */}
             <XStack
@@ -198,6 +187,16 @@ export const HeaderContents = React.memo((props: HeaderProps) => {
 const HeaderLinks = ({ showExtra, forceShowAllLinks }: HeaderProps) => {
     return (
         <>
+            <NextLink prefetch={false} href="/login">
+                <HeadAnchor
+                    $sm={{
+                        display: forceShowAllLinks ? "flex" : "none",
+                    }}
+                >
+                    Login
+                </HeadAnchor>
+            </NextLink>
+
             <NextLink prefetch={false} href="/">
                 <HeadAnchor
                     $sm={{

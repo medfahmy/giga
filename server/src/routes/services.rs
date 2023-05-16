@@ -24,8 +24,8 @@ struct Service {
     provider_id: i32,
     consumer_id: i32,
     image_url: String,
-    created_at: PrimitiveDateTime,
-    updated_at: PrimitiveDateTime,
+    created_at: chrono::NaiveDateTime,
+    updated_at: chrono::NaiveDateTime,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
