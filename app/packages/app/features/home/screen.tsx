@@ -9,7 +9,7 @@ import {
     Text,
     Header,
     MyComponent,
-} from "ui";
+} from "@my/ui";
 import React from "react";
 import { useLink } from "solito/link";
 
@@ -19,49 +19,40 @@ export function HomeScreen() {
     });
 
     return (
-        <>
-            <Header />
+        <YStack f={1} jc="center" ai="center" p="$4" space backgroundColor="$gray5Dark">
+            <YStack space="$4" maw={600}>
+                <H1 ta="center">Welcome</H1>
+                <Paragraph ta="center">
+                    Here's a basic starter to show navigating from one screen to another. This
+                    screen uses the same code on Next.js and React Native.
+                </Paragraph>
 
-            <YStack f={1} jc="center" ai="center" p="$4" space backgroundColor="$gray5Dark">
-                <YStack space="$4" maw={600}>
-                    <H1 ta="center">Welcome</H1>
-                    <Paragraph ta="center">
-                        Here's a basic starter to show navigating from one screen to another. This
-                        screen uses the same code on Next.js and React Native.
-                    </Paragraph>
-
-                    <Separator />
-                    <Paragraph ta="center">
-                        Made by{" "}
-                        <Anchor
-                            color="$color12"
-                            href="https://twitter.com/natebirdman"
-                            target="_blank"
-                        >
-                            @natebirdman
-                        </Anchor>
-                        ,{" "}
-                        <Anchor
-                            color="$color12"
-                            href="https://github.com/tamagui/tamagui"
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            give it a ⭐️
-                        </Anchor>
-                    </Paragraph>
-                </YStack>
-
-                <XStack>
-                    <Button {...linkProps}>Link to user</Button>
-                </XStack>
-
-                <MyComponent blue>
-                    <Text>MyComponent1</Text>
-                    <Text>MyComponent2</Text>
-                </MyComponent>
+                <Separator />
+                <Paragraph ta="center">
+                    Made by{" "}
+                    <Anchor color="$color12" href="https://twitter.com/natebirdman" target="_blank">
+                        @natebirdman
+                    </Anchor>
+                    ,{" "}
+                    <Anchor
+                        color="$color12"
+                        href="https://github.com/tamagui/tamagui"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        give it a ⭐️
+                    </Anchor>
+                </Paragraph>
             </YStack>
-        </>
+
+            <XStack>
+                <Button {...linkProps}>Link to user</Button>
+            </XStack>
+
+            <MyComponent blue>
+                <Text>MyComponent1</Text>
+                <Text>MyComponent2</Text>
+            </MyComponent>
+        </YStack>
     );
 }
-

@@ -8,16 +8,17 @@ import { Provider } from "app/provider";
 import Head from "next/head";
 import React from "react";
 import type { SolitoAppProps } from "solito";
+import { Header } from "@my/ui";
 
 function MyApp({ Component, pageProps }: SolitoAppProps) {
     return (
         <>
             <Head>
-                <title>Tamagui Example App</title>
-                <meta name="description" content="Tamagui, Solito, Expo & Next.js" />
+                <meta name="description" content="TODO" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <ThemeProvider>
+                <Header />
                 <Component {...pageProps} />
             </ThemeProvider>
         </>

@@ -3762,6 +3762,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tamagui/animations-css@npm:1.27.3":
+  version: 1.27.3
+  resolution: "@tamagui/animations-css@npm:1.27.3"
+  dependencies:
+    "@tamagui/cubic-bezier-animator": 1.27.3
+    "@tamagui/use-presence": 1.27.3
+    "@tamagui/web": 1.27.3
+  checksum: b5bc4ea670b6b4b138ade5dfc356e2926d2e441de046df1ae50a6f090c543200a6c205de801771bc33eb1271ea653c174de9c5f6de6b0488be1e26fec4a2075f
+  languageName: node
+  linkType: hard
+
 "@tamagui/animations-react-native@npm:1.27.3, @tamagui/animations-react-native@npm:latest":
   version: 1.27.3
   resolution: "@tamagui/animations-react-native@npm:1.27.3"
@@ -3932,6 +3943,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tamagui/config@npm:latest":
+  version: 1.27.3
+  resolution: "@tamagui/config@npm:1.27.3"
+  dependencies:
+    "@tamagui/animations-css": 1.27.3
+    "@tamagui/animations-react-native": 1.27.3
+    "@tamagui/colors": 1.27.3
+    "@tamagui/font-inter": 1.27.3
+    "@tamagui/font-silkscreen": 1.27.3
+    "@tamagui/react-native-media-driver": 1.27.3
+    "@tamagui/shorthands": 1.27.3
+    "@tamagui/themes": 1.27.3
+    "@tamagui/web": 1.27.3
+  checksum: 8b61b051efd687ad3d9ffa936df93ec3cf83a6db7055e3badc765f67d4c723d165ceeeb45875841785e2ff4b6d5dfd5b65bc9782e1cb54b4609001a39fa35b59
+  languageName: node
+  linkType: hard
+
 "@tamagui/constants@npm:1.27.3":
   version: 1.27.3
   resolution: "@tamagui/constants@npm:1.27.3"
@@ -3981,6 +4009,13 @@ __metadata:
   dependencies:
     "@tamagui/web": 1.27.3
   checksum: 28a7605a8160818a5e852e3f6f636f3f745c949839e812f7f8dc7c3cec14ffc310b8056e990af710bc474e3ec93e797e827e0e80ad92b4379670487a38de5a54
+  languageName: node
+  linkType: hard
+
+"@tamagui/cubic-bezier-animator@npm:1.27.3":
+  version: 1.27.3
+  resolution: "@tamagui/cubic-bezier-animator@npm:1.27.3"
+  checksum: 01c38b754f80e8114d5b8d6fa2fbe682b8c8516cfc22d89c52cad43fe2beb8d2250d92df3031d82e5cda640b92ca475094e52ddc5298744e6431ac9572842f03
   languageName: node
   linkType: hard
 
@@ -4068,12 +4103,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tamagui/font-inter@npm:latest":
+"@tamagui/font-inter@npm:1.27.3, @tamagui/font-inter@npm:latest":
   version: 1.27.3
   resolution: "@tamagui/font-inter@npm:1.27.3"
   dependencies:
     "@tamagui/core": 1.27.3
   checksum: 792c7e34d223214d08dc807a7ea35d9a3e4dc6d5a899375c4507d2bd6b0b9b54c42befaaa6d8f1b9bc50effac579a0ddc0ce2908ffa88abe771bb4dbc37ee948
+  languageName: node
+  linkType: hard
+
+"@tamagui/font-silkscreen@npm:1.27.3":
+  version: 1.27.3
+  resolution: "@tamagui/font-silkscreen@npm:1.27.3"
+  dependencies:
+    "@tamagui/core": 1.27.3
+  checksum: 8d9886315f685f88ff882cd37777ed73c90e32f1e2c3bb579940ddd5d18ce8330c0c8eed516671a95d40e82768e50b081f1d6ba451d9f4fe0c24461f387d16da
   languageName: node
   linkType: hard
 
@@ -4706,7 +4750,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tamagui/themes@npm:latest":
+"@tamagui/themes@npm:1.27.3, @tamagui/themes@npm:latest":
   version: 1.27.3
   resolution: "@tamagui/themes@npm:1.27.3"
   dependencies:
@@ -14163,6 +14207,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "next-app@workspace:apps/next"
   dependencies:
+    "@tamagui/config": latest
     "@tamagui/next-plugin": latest
     "@tamagui/next-theme": latest
     "@types/node": ^18.6.4

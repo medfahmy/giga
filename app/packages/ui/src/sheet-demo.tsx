@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Sheet, useToastController } from "ui";
+import { Button, Sheet, useToastController } from "@my/ui";
 import { ChevronDown, ChevronUp } from "@tamagui/lucide-icons";
 
 export function SheetDemo() {

@@ -10,6 +10,7 @@
         "lint": "next lint"
     },
     "dependencies": {
+        "@tamagui/config": "latest",
         "@tamagui/next-theme": "latest",
         "app": "*",
         "next": "^13.2.4",

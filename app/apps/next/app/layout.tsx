@@ -1,6 +1,6 @@
 "use client";
 
-import { TamaguiProvider } from "./TamaguiProvider";
+import { TamaguiProvider } from "./tamagui-provider";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
