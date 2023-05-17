@@ -34,11 +34,12 @@ struct CreateService {
 }
 
 async fn get_services(Extension(pool): Extension<PgPool>) -> impl IntoResponse {
-    let services: Vec<Service> = query_as!(Service, "select * from services")
-        .fetch_all(&pool)
-        .await
-        .unwrap();
-    Json(services)
+    todo!()
+    // let services: Vec<Service> = query_as!(Service, "select * from services")
+    //     .fetch_all(&pool)
+    //     .await
+    //     .unwrap();
+    // Json(services)
 }
 
 async fn get_service_by_id(Extension(pool): Extension<PgPool>) -> impl IntoResponse {}

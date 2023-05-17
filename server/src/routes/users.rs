@@ -1,16 +1,14 @@
 use crate::Error;
+use argon2::{
+    password_hash::{rand_core::OsRng, PasswordHash, PasswordHasher, PasswordVerifier, SaltString},
+    Argon2,
+};
+use axum::http::StatusCode;
 use axum::routing::{get, post};
 use axum::{response::IntoResponse, Extension, Json, Router};
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 use sqlx::PgPool;
-use argon2::{
-    password_hash::{
-        rand_core::OsRng,
-        PasswordHash, PasswordHasher, PasswordVerifier, SaltString
-    },
-    Argon2
-};
 
 pub fn create_router() -> axum::Router {
     Router::new()
@@ -22,21 +20,21 @@ pub fn create_router() -> axum::Router {
 #[derive(Debug, Deserialize, Serialize, sqlx::FromRow)]
 struct User {
     id: i32,
-    email: String,
+    // email: String,
     phone: String,
     password_hash: String,
-    role_id: i32,
-    first_name: String,
-    last_name: String,
-    image_url: String,
-    location: String,
+    // role_id: i32,
+    // first_name: String,
+    // last_name: String,
+    // image_url: String,
+    // location: String,
     created_at: chrono::NaiveDateTime,
     updated_at: chrono::NaiveDateTime,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
 struct SignupPayload {
-    username: String,
+    phone: String,
     password: String,
 }
 
@@ -49,24 +47,46 @@ async fn signup(
     //     Ok(t) => t,
     //     Err(_) => return (StatusCode::INTERNAL_SERVER_ERROR, "error while encoding token").into_response(),
     // };
-    
 
-    let password = b"hunter42"; // Bad password; don't actually use!
+    let user = sqlx::query_as!(User, "select * from users where phone = $1", signup.phone)
+        .fetch_one(&pool)
+        .await;
+
+    if user.is_ok() {
+        return (StatusCode::BAD_REQUEST, Json(json!({"error": "user already exists"})));
+    }
+
     let salt = SaltString::generate(&mut OsRng);
 
     // Argon2 with default params (Argon2id v19)
     let argon2 = Argon2::default();
 
     // Hash password to PHC string ($argon2id$v=19$...)
-    let password_hash = argon2.hash_password(password, &salt).unwrap().to_string();
+    let password_hash = argon2.hash_password(signup.password.as_bytes(), &salt).unwrap().to_string();
 
+    let user = sqlx::query_as!(
+        User,
+        r#"
+        INSERT INTO users (phone, password_hash)
+        VALUES ($1, $2)
+        RETURNING id, phone, password_hash, created_at, updated_at
+        "#,
+        signup.phone,
+        password_hash,
+    ).fetch_one(&pool).await;
 
-    Json(json!({ "username": signup.username, "password_hash": password_hash }))
+    match user {
+        Ok(user) => (
+            StatusCode::CREATED,
+            Json(json!({"phone": user.phone, "created_at": user.created_at, "updated_at": user.updated_at})),
+        ),
+        Err(e) => (StatusCode::INTERNAL_SERVER_ERROR, Json(json!({"error": format!("error while creating user: {}", e)})))
+    }
 }
 
 #[derive(Debug, Deserialize, Serialize)]
 struct LoginPayload {
-    username: String,
+    phone: String,
     password: String,
 }
 
@@ -74,21 +94,30 @@ async fn login(
     Extension(pool): Extension<PgPool>,
     Json(payload): Json<LoginPayload>,
 ) -> impl IntoResponse {
-    if payload.username != "admin" || payload.password != "admin" {
-        return Err(Error::LoginFail);
+    let user = sqlx::query_as!(User, "select * from users where phone = $1", payload.phone)
+        .fetch_one(&pool)
+        .await;
+
+    if user.is_err() {
+        return (StatusCode::BAD_REQUEST, Json(json!({"error": "user does not exist"})));
     }
 
-    // query user from db
-    // let user = sqlx::query_as::<_, User>("SELECT * FROM users WHERE username = $1");
+    let user = user.unwrap();
 
     // Verify password against PHC string.
-    //
     // NOTE: hash params from `parsed_hash` are used instead of what is configured in the
     // `Argon2` instance.
-    let parsed_hash = PasswordHash::new(&password_hash).unwrap();
-    assert!(Argon2::default().verify_password(payload.password, &parsed_hash).is_ok());
+ 
+    let parsed_hash = PasswordHash::new(&user.password_hash).unwrap();
+    let valid =  Argon2::default()
+        .verify_password(payload.password.as_bytes(), &parsed_hash)
+        .is_ok();
 
-    Ok(Json(json!({"token": "Bearer token"})))
+    if !valid {
+        return (StatusCode::BAD_REQUEST, Json(json!({"error": "invalid password"})));
+    }
+
+    (StatusCode::OK, Json(json!({"token": "TODO: Bearer token"})))
 }
 
 async fn me(Extension(pool): Extension<PgPool>) -> impl IntoResponse {
