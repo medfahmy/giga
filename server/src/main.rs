@@ -1,8 +1,8 @@
-use axum::Extension;
-use axum::{Json, Router, Server};
 use axum::routing::get;
-use serde_json::json;
+use axum::Extension;
+use axum::{Router, Server};
 use std::net::SocketAddr;
+use tower_cookies::CookieManagerLayer;
 use tower_http::trace;
 
 #[tokio::main]
@@ -24,7 +24,7 @@ async fn main() {
     let services_router = felix_server::routes::services::create_router();
 
     let router = Router::new()
-        .route("/ping", get(|| async { Json(json!({ "message": "pong"})) }))
+        .route("/", get(|| async { "up and running" }))
         .nest("/api/users", users_router)
         .nest("/api/services", services_router)
         .layer(
@@ -33,6 +33,7 @@ async fn main() {
                 .on_request(trace::DefaultOnRequest::new().level(tracing::Level::INFO))
                 .on_response(trace::DefaultOnResponse::new().level(tracing::Level::INFO)),
         )
+        .layer(CookieManagerLayer::new())
         .layer(Extension(pool));
 
     let addr: SocketAddr = "127.0.0.1:6969".parse().unwrap();
