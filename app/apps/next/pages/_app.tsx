@@ -8,6 +8,7 @@ import { Provider } from "app/provider";
 import Head from "next/head";
 import React from "react";
 import type { SolitoAppProps } from "solito";
+
 import { Header } from "@my/ui";
 
 function MyApp({ Component, pageProps }: SolitoAppProps) {

@@ -1,9 +1,19 @@
-import { Button, Form, H1, Section, Spinner, Input, Label, XStack, YStack, Separator, Paragraph } from "@my/ui";
+import {
+    Button,
+    Form,
+    H1,
+    Section,
+    Spinner,
+    Input,
+    Label,
+    XStack,
+    YStack,
+    Separator,
+    Paragraph,
+} from "@my/ui";
 
 export function LoginForm() {
-    const handleSubmit = () => (
-        console.log("clicked")
-    );
+    const handleSubmit = () => console.log("clicked");
 
     return (
         <Section borderColor="red">
@@ -28,15 +38,21 @@ export function LoginForm() {
 
                 <Separator marginVertical={15} borderColor="$foreground" />
 
-                <FormInput label="Username" id="username" placeholder="Enter your username" />
-                <FormInput label="Password" id="password" placeholder="Enter your password" />
+                <FormInput
+                    label="Username"
+                    id="username"
+                    placeholder="Enter your username"
+                />
+                <FormInput
+                    label="Password"
+                    id="password"
+                    placeholder="Enter your password"
+                />
 
                 <Separator marginVertical={15} />
 
                 <Form.Trigger asChild disabled={false}>
-                    <Button width={250}>
-                        Continue with email
-                    </Button>
+                    <Button width={250}>Continue with email</Button>
                 </Form.Trigger>
 
                 <Paragraph ta="center" color="$color12">

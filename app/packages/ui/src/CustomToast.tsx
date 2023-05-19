@@ -23,7 +23,9 @@ export const CustomToast = () => {
             <YStack>
                 <Toast.Title>{currentToast.title}</Toast.Title>
                 {!!currentToast.message && (
-                    <Toast.Description>{currentToast.message}</Toast.Description>
+                    <Toast.Description>
+                        {currentToast.message}
+                    </Toast.Description>
                 )}
             </YStack>
         </Toast>

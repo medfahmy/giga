@@ -1,2 +1,4 @@
 .next/
 .expo/
+dist/
+types/

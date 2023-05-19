@@ -1,7 +1,12 @@
 import { Monitor, Moon, Sun } from "@tamagui/lucide-icons";
 import { useThemeSetting } from "@tamagui/next-theme";
 import { useState } from "react";
-import { Button, ButtonProps, TooltipSimple, useIsomorphicLayoutEffect } from "tamagui";
+import {
+    Button,
+    ButtonProps,
+    TooltipSimple,
+    useIsomorphicLayoutEffect,
+} from "tamagui";
 
 const icons = {
     system: Monitor,

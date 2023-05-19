@@ -24,7 +24,11 @@ declare module "tamagui" {
     interface TamaguiCustomConfig extends Conf {}
 }
 
-export const TamaguiProvider = ({ children }: { children: React.ReactNode }) => {
+export const TamaguiProvider = ({
+    children,
+}: {
+    children: React.ReactNode;
+}) => {
     const [theme, setTheme] = useRootTheme();
 
     AppRegistry.registerComponent("Main", () => Main);
@@ -32,7 +36,9 @@ export const TamaguiProvider = ({ children }: { children: React.ReactNode }) => 
     const { getStyleElement } = AppRegistry.getApplication("Main");
 
     useServerInsertedHTML(() => getStyleElement());
-    useServerInsertedHTML(() => <style dangerouslySetInnerHTML={{ __html: Tamagui.getCSS() }} />);
+    useServerInsertedHTML(() => (
+        <style dangerouslySetInnerHTML={{ __html: Tamagui.getCSS() }} />
+    ));
 
     return (
         <NextThemeProvider
@@ -40,7 +46,11 @@ export const TamaguiProvider = ({ children }: { children: React.ReactNode }) => 
                 setTheme(next as any);
             }}
         >
-            <TamaguiProviderOG config={config} themeClassNameOnRoot defaultTheme={theme}>
+            <TamaguiProviderOG
+                config={config}
+                themeClassNameOnRoot
+                defaultTheme={theme}
+            >
                 {children}
             </TamaguiProviderOG>
         </NextThemeProvider>

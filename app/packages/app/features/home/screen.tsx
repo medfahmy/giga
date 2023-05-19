@@ -7,7 +7,6 @@ import {
     XStack,
     YStack,
     Text,
-    Header,
     MyComponent,
 } from "@my/ui";
 import React from "react";
@@ -19,18 +18,30 @@ export function HomeScreen() {
     });
 
     return (
-        <YStack f={1} jc="center" ai="center" p="$4" space backgroundColor="$gray5Dark">
+        <YStack
+            f={1}
+            jc="center"
+            ai="center"
+            p="$4"
+            space
+            backgroundColor="$gray5Dark"
+        >
             <YStack space="$4" maw={600}>
                 <H1 ta="center">Welcome</H1>
                 <Paragraph ta="center">
-                    Here's a basic starter to show navigating from one screen to another. This
-                    screen uses the same code on Next.js and React Native.
+                    Here's a basic starter to show navigating from one screen to
+                    another. This screen uses the same code on Next.js and React
+                    Native.
                 </Paragraph>
 
                 <Separator />
                 <Paragraph ta="center">
                     Made by{" "}
-                    <Anchor color="$color12" href="https://twitter.com/natebirdman" target="_blank">
+                    <Anchor
+                        color="$color12"
+                        href="https://twitter.com/natebirdman"
+                        target="_blank"
+                    >
                         @natebirdman
                     </Anchor>
                     ,{" "}

@@ -5,7 +5,7 @@ export default function Page() {
     return (
         <>
             <Head>
-                <title>Tbrgig</title>
+                <title>tbrgig</title>
             </Head>
             <HomeScreen />
         </>

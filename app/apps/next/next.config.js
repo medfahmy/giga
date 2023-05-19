@@ -8,7 +8,8 @@ const boolVals = {
 };
 
 const disableExtraction =
-    boolVals[process.env.DISABLE_EXTRACTION] ?? process.env.NODE_ENV === "development";
+    boolVals[process.env.DISABLE_EXTRACTION] ??
+    process.env.NODE_ENV === "development";
 
 // console.log(`
 //

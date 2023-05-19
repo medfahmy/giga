@@ -42,7 +42,9 @@ export function Header(props: HeaderProps) {
     return (
         <>
             <XStack
-                className={`ease-out all ms200 ${isScrolled ? "blur-light hover-highlights " : ""}`}
+                className={`ease-out all ms200 ${
+                    isScrolled ? "blur-light hover-highlights " : ""
+                }`}
                 bbc="$borderColor"
                 zi={50000}
                 // @ts-ignore
@@ -82,7 +84,7 @@ export const HeaderContents = React.memo((props: HeaderProps) => {
         >
             <XStack ai="center" space="$4">
                 <YStack my={-20} px="$3">
-                    <H2>Tbrgig</H2>
+                    <H2>tbrgig</H2>
                 </YStack>
                 {/* ) : (
                     <NextLink href="/">
@@ -93,7 +95,14 @@ export const HeaderContents = React.memo((props: HeaderProps) => {
                 )} */}
 
                 <TooltipGroup delay={{ open: 100, close: 100 }}>
-                    <XGroup boc="$color2" bw={1} mah={32} bc="transparent" ai="center" size="$3">
+                    <XGroup
+                        boc="$color2"
+                        bw={1}
+                        mah={32}
+                        bc="transparent"
+                        ai="center"
+                        size="$3"
+                    >
                         <XGroup.Item>
                             <ThemeToggle borderWidth={0} chromeless />
                         </XGroup.Item>
@@ -119,8 +128,8 @@ export const HeaderContents = React.memo((props: HeaderProps) => {
                 ai="center"
             >
                 <NextLink href="/" aria-label="Homepage">
-                    <XStack cursor="default" pointerEvents="auto" als="center">
-                        <H2>Tbrgig</H2>
+                    <XStack cursor="pointer" pointerEvents="auto" als="center">
+                        <H2>tbrgig</H2>
                     </XStack>
                 </NextLink>
             </XStack>
@@ -137,8 +146,15 @@ export const HeaderContents = React.memo((props: HeaderProps) => {
                 <XStack ai="center" space="$3">
                     <HeaderLinks {...props} />
 
-                    <NextLink target="_blank" href="https://github.com/tamagui/tamagui">
-                        <YStack p="$2" opacity={0.7} hoverStyle={{ opacity: 1 }}>
+                    <NextLink
+                        target="_blank"
+                        href="https://github.com/tamagui/tamagui"
+                    >
+                        <YStack
+                            p="$2"
+                            opacity={0.7}
+                            hoverStyle={{ opacity: 1 }}
+                        >
                             <VisuallyHidden>
                                 <Text>Github</Text>
                             </VisuallyHidden>
@@ -255,7 +271,12 @@ const SmallMenu = React.memo(() => {
     const [open, setOpen] = React.useState(false);
 
     return (
-        <Popover open={open} onOpenChange={setOpen} size="$5" stayInFrame={{ padding: 20 }}>
+        <Popover
+            open={open}
+            onOpenChange={setOpen}
+            size="$5"
+            stayInFrame={{ padding: 20 }}
+        >
             <Popover.Trigger asChild>
                 <Button
                     size="$3"
@@ -302,7 +323,10 @@ const SmallMenu = React.memo(() => {
             >
                 <Popover.Arrow borderWidth={1} boc="$borderColor" />
 
-                <Popover.ScrollView showsVerticalScrollIndicator={false} style={{ flex: 1 }}>
+                <Popover.ScrollView
+                    showsVerticalScrollIndicator={false}
+                    style={{ flex: 1 }}
+                >
                     <YStack
                         miw={230}
                         p="$3"
