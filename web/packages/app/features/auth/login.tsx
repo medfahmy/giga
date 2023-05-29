@@ -19,7 +19,7 @@ export function LoginScreen() {
             ai="center"
             p="$4"
             space
-            backgroundColor="$gray5Dark"
+            backgroundColor="$background"
             borderColor="red"
         >
             <LoginForm />

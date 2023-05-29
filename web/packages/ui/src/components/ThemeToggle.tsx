@@ -9,7 +9,6 @@ import {
 } from "tamagui";
 
 const icons = {
-    system: Monitor,
     light: Sun,
     dark: Moon,
 };

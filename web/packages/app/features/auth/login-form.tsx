@@ -20,7 +20,7 @@ export function LoginForm() {
             <Form
                 alignItems="center"
                 // minWidth={300}
-                width={300}
+                width={500}
                 space="$4"
                 onSubmit={handleSubmit}
                 // borderWidth={1}
@@ -31,17 +31,10 @@ export function LoginForm() {
             >
                 <H1>Log in</H1>
 
-                <Separator marginVertical={15} borderColor="$foreground" />
-
-                <Button width={250}>Continue with Google</Button>
-                <Button width={250}>Continue with Apple</Button>
-
-                <Separator marginVertical={15} borderColor="$foreground" />
-
                 <FormInput
-                    label="Username"
-                    id="username"
-                    placeholder="Enter your username"
+                    label="Phone number"
+                    id="phone"
+                    placeholder="Enter your phone number"
                 />
                 <FormInput
                     label="Password"
